@@ -10,7 +10,7 @@ namespace Sulkis.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            ViewBag.Message = "Tämä on Peten tekemä sulkapallotulosten seurantasofta.";
 
             return View();
         }
