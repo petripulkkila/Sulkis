@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Raven.Client.Document;
 
 namespace Sulkis
 {
@@ -14,6 +15,8 @@ namespace Sulkis
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static DocumentStore Store { get; set; }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -23,6 +26,12 @@ namespace Sulkis
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            Store = new DocumentStore()
+            {
+                ConnectionStringName = "RavenDB"
+            };
+            Store.Initialize();
         }
     }
 }
